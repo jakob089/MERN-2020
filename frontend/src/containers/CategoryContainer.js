@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import callApi from '../utils/callApi';
-import { addTodo, addTodoRequest, getProductsRequest } from '../actions'
+import { getProductsRequest, getCategoriesRequest } from '../actions'
 import Category from '../pages/category/Category';
 
 function CategoryContainer(props) {
   useEffect(() => {
     props.onGetProducts();
+    props.onGetCategories();
   }, [])
 
   const showProducts = () => {
@@ -35,18 +35,32 @@ function CategoryContainer(props) {
     }
   }
 
+  const showCategories = () => {
+    if (props.categories.length > 0) {
+      return props.categories.map((category) => {
+        return (
+          <li className="filter-list"><input className="pixel-radio" type="radio" id="men" name="brand" /><label for="men">{category.name}<span> (3600)</span></label></li>
+        )
+      })
+    }
+  }
+
   return (
-    <Category showProducts={showProducts} />
+    <Category showProducts={showProducts} showCategories={showCategories} />
   );
 }
 
 function mapStateToProps(state) {
-  return { products: state.product }
+  return { 
+    products: state.product,
+    categories: state.category,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onGetProducts: () => dispatch(getProductsRequest()),
+    onGetCategories: () => dispatch(getCategoriesRequest()),
   }
 }
 

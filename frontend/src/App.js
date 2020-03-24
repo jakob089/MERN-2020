@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import Home from './pages/home/Home';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import CategoryContainer from './containers/CategoryContainer';
 
 function App() {

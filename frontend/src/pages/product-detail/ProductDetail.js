@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Category() {
+function ProductDetail() {
   return (
     <div className="category">
       <section className="blog-banner-area" id="category">
@@ -387,4 +387,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default ProductDetail;

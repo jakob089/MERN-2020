@@ -1,17 +1,5 @@
-import { ADD_TODO, GET_PRODUCTS } from './actionType'
+import { GET_PRODUCTS, GET_CATEGORIES } from './actionType'
 import callApi from '../utils/callApi'
-
-export function addTodoRequest() {
-    return (dispatch) => {
-        callApi('product', 'GET', null).then(res => {
-            dispatch(addTodo(res.data))
-        })
-    }
-}
-
-export function addTodo(products) {
-    return { type: ADD_TODO, products }
-}
 
 export function getProductsRequest() {
     return (dispatch) => {
@@ -23,4 +11,16 @@ export function getProductsRequest() {
 
 export function getProducts(products) {
     return { type: GET_PRODUCTS, products }
+}
+
+export function getCategoriesRequest() {
+    return (dispatch) => {
+        callApi('category', 'GET', null).then(res => {
+            dispatch(getCategories(res.data))
+        })
+    }
+}
+
+export function getCategories(categories) {
+    return { type: GET_CATEGORIES, categories }
 }
